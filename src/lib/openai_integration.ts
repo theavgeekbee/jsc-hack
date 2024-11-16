@@ -11,16 +11,12 @@ export async function generateRecipe(
 ): Promise<string> {
     // todo: authenticate user with the auth_token to make sure they have access to the API
 
-    const prompt = SYSTEM_PROMPT
-        .replace("${INGREDIENTS}", ingredients.join("\n"))
-        .replace("${SPECIAL_INSTRUCTIONS}", specialInstructions);
-
     const completion = await openai.chat.completions.create({
         model: "gpt-4o",
         messages: [
             {
                 role: "system",
-                content: prompt
+                content: SYSTEM_PROMPT
             },
             {
                 role: "user",
