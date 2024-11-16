@@ -20,7 +20,11 @@ export async function GET(): Promise<NextResponse> {
     if (data.length === 0) {
         const challenge = await generateDailyChallenge();
 
-        await supabase.from('challenges').insert({ day: new Date().toISOString().slice(0, 10), challenge: challenge });
+        await supabase.from('challenges').insert({
+            day: new Date().toISOString().slice(0, 10),
+            description: challenge,
+            aura: 10
+        });
 
         return new NextResponse(challenge, { status: 200 });
     } else {
