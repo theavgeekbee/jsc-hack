@@ -1,0 +1,56 @@
+body > nav {
+  position: absolute;
+  bottom: 1rem;
+
+  section {
+    display: flex;
+  }
+}
+
+label + input {
+  display: block;
+}
+
+label {
+  font-size: var(--font-small);
+}
+
+input:is([type="text"], [type="email"], [type="password"]) {
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  padding: 0.5rem;
+}
+
+button {
+  padding: 0.5rem;
+  border-style: none;
+  border-radius: 0.5rem;
+
+  transition: background-color 0.2s, color 0.2s;
+
+  cursor: pointer;
+
+  &.primary {
+    color: var(--color-container);
+    background-color: var(--color-primary);
+  }
+
+  &.secondary {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-container);
+
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-container);
+    }
+  }
+
+  &.tertiary {
+    border: none;
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+    background: none;
+  }
+}
