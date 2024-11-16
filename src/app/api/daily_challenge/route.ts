@@ -28,6 +28,6 @@ export async function GET(): Promise<NextResponse> {
 
         return new NextResponse(challenge, { status: 200 });
     } else {
-        return new NextResponse(data[0].challenge, { status: 200 });
+        return new NextResponse(data[0].description, { status: 200 });
     }
 }
