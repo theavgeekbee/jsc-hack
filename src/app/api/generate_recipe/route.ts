@@ -8,8 +8,5 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const recipe = await generateRecipe(token, ingredients, specialInstructions);
 
-    // Store the recipe and get the recipe UUID
-    const recipeUUID = "1234";
-
-    return new NextResponse(JSON.stringify({ recipeUUID }), { status: 200 });
+    return new NextResponse(JSON.stringify({ recipe }), { status: 200 });
 }

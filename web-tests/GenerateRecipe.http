@@ -4,8 +4,14 @@ Authorization: Bearer test
 
 {
   "ingredients" : [
-    "sigma"
+    "Lemon-Garlic Grilled Chicken",
+    "Dried Crackers",
+    "Canned Tuna",
+    "Creamed Spinach",
+    "Canned Corn",
+    "Peas",
+    "Chocolate Bar"
   ],
-  "specialInstructions": ""
+  "specialInstructions": "I'd like the meal to include all 3 courses"
 
 }
