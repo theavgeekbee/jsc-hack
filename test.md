@@ -16,7 +16,7 @@ Prepare for an out-of-this-world dining experience by combining these ingredient
 5. **Garnish with a few extra kernels of corn** for visual appeal and a sweet contrast.
 ## Main Course: Space Chicken and Pea Delight
 ### Ingredients
-- Lemon-Garlic Grilled Chicke
+- Lemon-Garlic Grilled Chicken
 - Peas
 - Dried Crackers
 ### Instructions

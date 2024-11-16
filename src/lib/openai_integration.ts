@@ -2,12 +2,19 @@ import OpenAI from "openai";
 
 const openai: OpenAI = new OpenAI();
 
-const SYSTEM_PROMPT = "You're an AI planning assistant for an astronaut on a space mission. The astronaut wants new, innovative ideas on how they can combine their provided foods in a interesting and delicious way. The astronaut has provided a list of foods they have and want to use as well as special instructions, if any. Try to make the recipe follow a general theme. You do not have to use all of the ingredients. Feel free to be a bit unorthodox in your meal planning. Keep in mind that it may not be possible to deconstruct the original ingredients of the provided foods. Remember that they are on a space mission, so consider those limitations.";
+const PLAN_SYSTEM_PROMPT = "You are an assistant to an astronaut on a long mission. Design a detailed plan of activities for the duration of their mission. You'll be provided the duration of their mission. Each month in the mission should bring a new daily challenge for them to complete. Return your answer in JSON format using the following schema:\n" +
+    "[{\"month\": ..., \"activity\": ...}, ...]\n" +
+    "\n" +
+    "Example:\n" +
+    "[{\"month\": 1, \"activity\": \"Origami\"}, {\"month\": 2, \"activity\": \"Meditation for 30 minutes\"}]\n" +
+    "\n" +
+    "Do not put the result in a code block. Do not add any other text. Do not include new-line characters.";
 
-export async function generateRecipe(
+const DAILY_CHALLENGE_SYSTEM_PROMPT = "You are an assistant to a group of astronauts on a long mission. Create a daily challenge for all of the astronauts to complete. Return your response in one line. Do not include any code blocks, formatting, other text, or new-line characters.";
+
+export async function generatePlan(
     auth_token: string,
-    ingredients: string[],
-    specialInstructions: string = "No Special Instructions"
+    mission_duration: number
 ): Promise<string> {
     // todo: authenticate user with the auth_token to make sure they have access to the API
 
@@ -16,11 +23,11 @@ export async function generateRecipe(
         messages: [
             {
                 role: "system",
-                content: SYSTEM_PROMPT
+                content: PLAN_SYSTEM_PROMPT
             },
             {
                 role: "user",
-                content: `Generate a recipe using the following ingredients: ${ingredients.join(", ")} and special instructions: ${specialInstructions}. Format your recipe in markdown by placing the ingredients in a bulleted list and the instructions in a numbered list.`
+                content: `The astronaut's mission will last ${mission_duration} months.`
             },
         ],
     });
