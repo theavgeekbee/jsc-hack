@@ -9,11 +9,11 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     }
 
     const url = new URL(req.url);
-    const mission_duration = url.searchParams.get("mission_duration");
+    const length = url.searchParams.get("mission_length");
 
     // authenticate the user
 
-    const plan = await generatePlan(auth, mission_duration ? parseInt(mission_duration) : 12);
+    const challenge = await generatePlan(length ? parseInt(length) : 12);
 
-    return new NextResponse(plan, { status: 200 });
+    return new NextResponse(challenge, { status: 200 });
 }

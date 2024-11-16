@@ -1,2 +1,2 @@
-GET http://localhost:3000/api/generate_plan?mission_duration=5
+GET http://localhost:3000/api/generate_plan?mission_length=5
 Authorization: Bearer test
