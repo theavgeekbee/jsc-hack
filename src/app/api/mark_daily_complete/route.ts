@@ -29,7 +29,10 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
     await supabase
         .from("users")
-        .update({completed_challenges: [...(row.data.completed_challenges ?? []), id]})
+        .update({
+            completed_challenges: [...(row.data.completed_challenges ?? []), id],
+            aura: row.data.aura + daily_challenge.data.aura
+        })
         .eq("email", user.email);
 
     return NextResponse.json({ message: "Marked daily challenge as complete" }, { status: 200 });

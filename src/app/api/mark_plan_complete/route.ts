@@ -21,7 +21,8 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
             .from("users")
             .update({
                 last_planned_completed: new Date().toISOString().slice(0, 10),
-                streak: 1
+                streak: 1,
+                aura: 10
             })
             .eq("email", user.email);
         return NextResponse.json({message: "Marked daily plan as complete", aura_change: 10}, { status: 200 });
@@ -52,6 +53,12 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         await supabase.from("users").update({streak: 0}).eq("email", user.email);
     }
 
+    const aura_change = daysBetween >= 1 && daysBetween < 2 ? 5 : -10;
+
+    await supabase
+        .from("users")
+        .update({aura: row.data.aura as number + aura_change})
+        .eq("email", user.email);
 
     return NextResponse.json({
         message: "Marked daily plan as complete",
