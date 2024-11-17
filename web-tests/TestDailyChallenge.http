@@ -1,2 +1,0 @@
-POST http://localhost:3000/api/gen_daily_challenge
-Authorization: Bearer test
