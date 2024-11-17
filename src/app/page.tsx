@@ -12,8 +12,10 @@ export default async function Home() {
   if (!user) {
     redirect("/login");
   }
+
+  const row = await supabase.from("users").select("*").eq("email", user.email).single();
   
-  if (!user.name) {
+  if (!row.data.name) {
     redirect("/onboarding");
   }
 
