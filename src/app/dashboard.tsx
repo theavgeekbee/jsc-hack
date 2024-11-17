@@ -263,7 +263,7 @@ export default function Home() {
             onClick={() => markPlanComplete()}
           >
             <h3>MONTHLY</h3>
-            {plan.activity ?? <i>It's empty</i>}
+            {plan.activity ?? <i>It&#39;s empty</i>}
           </div>
         </section>
       </section>

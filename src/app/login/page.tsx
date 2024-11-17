@@ -1,6 +1,5 @@
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import Loading from "@/components/Loading";
 
 import { login, signup } from "./actions";
 
