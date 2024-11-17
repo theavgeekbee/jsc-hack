@@ -9,8 +9,8 @@ export default function LoginPage() {
     return (
         <>
             <section>
+                <h1>Welcome aboard</h1>
                 <form>
-                    <h1>Welcome aboard</h1>
                     <Input type="email" id="email" label="Email"/>
                     <br />
                     <Input type="password" id="password" label="Password"/>

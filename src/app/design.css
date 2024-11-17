@@ -1,3 +1,7 @@
+h1 {
+  font-family: var(--font-readexpro-bold);
+}
+
 body > nav {
   position: absolute;
   bottom: 1rem;
@@ -41,11 +45,6 @@ button {
     background-color: var(--color-container);
 
     color: var(--color-primary);
-
-    &:hover {
-      background-color: var(--color-primary);
-      color: var(--color-container);
-    }
   }
 
   &.tertiary {

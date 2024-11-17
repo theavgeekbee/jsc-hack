@@ -13,6 +13,14 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const readexProRegular = localFont({
+  src: "./fonts/ReadexPro-Regular.ttf",
+  variable: "--font-readexpro-regular",
+});
+const readexProBold = localFont({
+  src: "./fonts/ReadexPro-Bold.ttf",
+  variable: "--font-readexpro-bold",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${readexProRegular.variable} ${readexProBold.variable}`}
       >
         <main>
           {children}

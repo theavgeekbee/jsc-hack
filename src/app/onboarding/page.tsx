@@ -3,14 +3,11 @@ import {useState} from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
-export default function Onboarding() {
-    const [name, setName] = useState<undefined | string>(undefined);
+import './page.css';
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    function submitForm(_: FormData) {
-        if (!name) {
-            return;
-        }
+export default function Onboarding() {
+    function submitForm(event: FormEvent<HTMLFormElement>) {
+        const {name} = event.target;
 
         fetch("/api/update_name", {
             method: "POST",
@@ -22,11 +19,9 @@ export default function Onboarding() {
 
     return (
         <section>
-            <form>
-                <Input label={"Name"} id={"name"} type={"text"} onChange={
-                    (event) => setName(event.target.value)
-                }/>
-                <Button variant={"primary"} type={"submit"} formAction={submitForm}>Submit</Button>
+            <form onsubmit={submitForm}>
+                <Input label={"Name"} id={"name"} type={"text"} />
+                <Button variant={"primary"} type={"submit"}>Submit</Button>
             </form>
         </section>
     );
