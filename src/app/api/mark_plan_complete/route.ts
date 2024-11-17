@@ -22,7 +22,7 @@ export async function GET(): Promise<NextResponse> {
             .update({
                 last_planned_completed: new Date().toISOString().slice(0, 10),
                 streak: 1,
-                aura: 10
+                aura: row.data.aura as number + 10
             })
             .eq("email", user.email);
         return NextResponse.json({message: "Marked daily plan as complete", aura_change: 10}, {status: 200});

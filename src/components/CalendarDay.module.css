@@ -1,4 +1,6 @@
 .calendarday {
+  --glow: #171D1C55;
+
   position: relative;
 
   border: 2px solid var(--color-foreground);
@@ -16,6 +18,8 @@
     }
   }
   &[data-state="streak"] {
+    --glow: #104EE3BB;
+
     background-color: var(--color-primary);
     color: var(--color-container);
     border: none;
@@ -25,7 +29,14 @@
     }
   }
   &[data-state="past"] {
+    --glow: #171D1C;
     opacity: 0.2;
+  }
+
+  transition: box-shadow 0.2s ease-in-out, scale 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 16px 0 var(--glow);
+    scale: 1.05;
   }
 }
 
@@ -33,6 +44,8 @@
   position: absolute;
   color: var(--color-foreground);
   font-size: var(--font-small);
+
+  user-select: none;
 
   &:first-child {
     top: 1rem;

@@ -24,6 +24,8 @@ export default function Home() {
     undefined | any[]
   >(undefined);
 
+  console.log(daily_challenge)
+
   useEffect(() => {
     fetch("/api/get_plan")
       .then((response) => response.ok)
@@ -39,6 +41,7 @@ export default function Home() {
         setUserInfo(data);
         const last_5_day_challenges = [];
         const completed = data.data.completed_challenges;
+        // TODO: use .slice() instead
         for (let i = 0; i < 5; i++) {
           if (completed.length - 1 - i < 0) break;
           last_5_day_challenges.push(completed[completed.length - 1 - i]);
@@ -88,7 +91,7 @@ export default function Home() {
     date: Date,
     has_challenged: boolean
   ): "today" | "streak" | "past" | undefined {
-    // has it bee completed ?
+    // has it been completed ?
     if (has_challenged) {
       return "streak";
     }
@@ -128,7 +131,7 @@ export default function Home() {
             return <CalendarDay
               day={date.getDate()}
               dayName={get_day_name(date)}
-              state={get_state(date)}
+              state={get_state(date, false)}
               key={index}
             />
           }
