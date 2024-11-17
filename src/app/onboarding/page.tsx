@@ -15,11 +15,11 @@ export default function Onboarding() {
         }
 
         const name = data.get("name") as string;
-        const length = data.get("length") as string;
+        const length = data.get("length") as number;
 
         fetch("/api/update_profile", {
             method: "POST",
-            body: JSON.stringify({name, mission_length}),
+            body: JSON.stringify({name, mission_length: length}),
         })
             .then((response) => response.ok)
             .then(res => res)

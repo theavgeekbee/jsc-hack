@@ -36,8 +36,8 @@ export default function Home() {
             .then((data) => {
                 setUserInfo(data);
 
-                const completed = data.data.completed_challenges;
-                const last_5_day_challenges = completed.slice(-5).reverse();;
+                const completed = data.data.completed_challenges ?? [];
+                const last_5_day_challenges = completed.slice(-5).reverse();
 
                 Promise.all(
                     last_5_day_challenges.map(async (challengeId: string) => {
