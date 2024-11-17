@@ -17,7 +17,7 @@ export default function Onboarding() {
     }
 
     const name = data.get("name") as string;
-    const length = data.get("length") as string;
+    const length = data.get("mission_length") as string;
 
     fetch("/api/update_profile", {
       method: "POST",
