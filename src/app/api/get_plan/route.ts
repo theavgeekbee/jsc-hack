@@ -7,21 +7,20 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     const {data: {user}} = await supabase.auth.getUser();
 
     if (!user) {
-        return new NextResponse("User is not authenticated", {status: 401});
+        return NextResponse.json({err: "User is not authenticated"}, {status: 401});
     }
 
 
     const row = await supabase.from("users").select("*").eq("email", user.email).single();
-    if (row.data.plan.length > 0) {
-        return new NextResponse(row.data.plan, {status: 200});
-    }
 
     const url = new URL(req.url);
     const length = url.searchParams.get("mission_length");
+    const challenge = row.data.plan.length > 0 ?
+        row.data.plan :
+        await generatePlan(length ? parseInt(length) : 12)
 
-    const challenge = await generatePlan(length ? parseInt(length) : 12);
+    if (row.data.plan.length === 0)
+        await supabase.from("users").update({plan: challenge}).eq("email", user.email);
 
-    await supabase.from("users").update({ plan: challenge }).eq("email", user.email);
-
-    return new NextResponse(challenge, { status: 200 });
+    return NextResponse.json({challenge}, {status: 200});
 }

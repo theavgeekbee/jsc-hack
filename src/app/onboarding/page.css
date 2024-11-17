@@ -1,6 +1,18 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    margin: 0;
+}
+
 p, input {
     font-family: var(--font-readexpro-regular);
     font-size: 2rem;
+
+    margin: 0;
 }
 
 input#name {
@@ -13,4 +25,10 @@ input#name {
         outline: none;
         border-color: var(--color-primary);
     }
+}
+
+button {
+    margin-top: 1rem;
+    font-size: 1rem;
+    padding: 1rem 2rem;
 }
