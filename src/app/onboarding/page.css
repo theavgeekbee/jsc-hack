@@ -1,0 +1,16 @@
+p, input {
+    font-family: var(--font-readexpro-regular);
+    font-size: 2rem;
+}
+
+input#name {
+    border: none;
+    border-bottom: 2px solid var(--color-border);
+    border-radius: 0;
+    width: fit-content;
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+}

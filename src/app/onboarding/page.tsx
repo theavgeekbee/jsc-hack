@@ -22,8 +22,9 @@ export default function Onboarding() {
     return (
         <section>
             <form onsubmit={submitForm}>
-                <Input label={"Name"} id={"name"} type={"text"} />
-                <Button variant={"primary"} type={"submit"}>Submit</Button>
+                <p>Hello! My name is <input id={"name"} type={"text"} placeholder={"type here"} /></p>
+                
+                <Button variant={"primary"} type={"submit"}>Let's go!</Button>
             </form>
         </section>
     );
