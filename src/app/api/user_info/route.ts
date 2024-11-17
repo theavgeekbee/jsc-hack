@@ -4,10 +4,12 @@ import {NextRequest, NextResponse} from "next/server";
 export async function GET(req: NextRequest): Promise<NextResponse> {
     const supabase = await createClient();
 
-    const url = new URL(req.url);
-    const email = url.searchParams.get("email");
+    const { data: { user }} = await supabase.auth.getUser();
+    if (!user) {
+        return NextResponse.json({err: "User is not authenticated"}, {status: 401});
+    }
 
-    const user = await supabase.from("users").select("*").eq("email", email).single();
+    const row = await supabase.from("users").select("*").eq("email", user?.email).single();
 
-    return NextResponse.json({data: user.data});
+    return NextResponse.json({data: row.data});
 }

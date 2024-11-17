@@ -3,11 +3,11 @@
 import {createClient} from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
 
-import Home from "./home.tsx";
+import Home from "@/app/home";
 
 import './page.css'
 
-export default async function Home() {
+export default async function MainPage() {
     const supabase = await createClient();
     const {data: {user}} = await supabase.auth.getUser();
 

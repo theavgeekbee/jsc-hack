@@ -12,8 +12,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
     const row = await supabase.from("users").select("*").eq("email", user.email).single();
 
-    const url = new URL(req.url);
-    const length = url.searchParams.get("mission_length");
+    const length = req.nextUrl.searchParams.get("mission_length");
     const challenge = row.data.plan.length > 0 ?
         row.data.plan :
         await generatePlan(length ? parseInt(length) : 12)
