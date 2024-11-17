@@ -22,5 +22,43 @@
     border-radius: 1rem;
 
     color: white;
+
+    position: relative;
+  }
+
+  & ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  & li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 600px;
+
+    padding: 1rem;
+    margin: 1rem auto;
+
+    border-radius: 1rem;
+
+    border: 2px solid var(--color-foreground);
+
+    & span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    & span > span:first-child {
+      font-family: var(--font-readexpro-bold);
+      color: var(--color-primary);
+      font-size: 1.5rem;
+    }
+
+    & span:last-child {
+      font-family: var(--font-readexpro-bold);
+    }
   }
 }
