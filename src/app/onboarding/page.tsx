@@ -2,6 +2,7 @@
 import {useState} from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import {redirect} from "next/navigation";
 
 export default function Onboarding() {
     const [name, setName] = useState<undefined | string>(undefined);
@@ -17,7 +18,8 @@ export default function Onboarding() {
             body: JSON.stringify({name}),
         })
             .then((response) => response.ok)
-            .then(res => res);
+            .then(res => res)
+            .then(() => {redirect("/")})
     }
 
     return (

@@ -15,6 +15,18 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         .eq("email", user.email)
         .single();
 
+    if (!row.data.last_planned_completed) {
+        // Set the streak to 1 and the last planned completed to today
+        await supabase
+            .from("users")
+            .update({
+                last_planned_completed: new Date().toISOString().slice(0, 10),
+                streak: 1
+            })
+            .eq("email", user.email);
+        return NextResponse.json({message: "Marked daily plan as complete", aura_change: 10}, { status: 200 });
+    }
+
     const today = new Date();
     const truncatedToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
@@ -26,8 +38,6 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         return new NextResponse("Plan already marked as complete today", { status: 420 });
     }
 
-    console.log(daysBetween)
-
     await supabase
         .from("users")
         .update({
@@ -36,7 +46,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         .eq("email", user.email);
 
     if (daysBetween >= 1 && daysBetween < 2) {
-        var existingStreak = await supabase.from("users").select("streak").eq("email", user.email).single();
+        const existingStreak = await supabase.from("users").select("streak").eq("email", user.email).single();
         await supabase.from("users").update({streak: ++(existingStreak.data!.streak as number)}).eq("email", user.email);
     } else {
         await supabase.from("users").update({streak: 0}).eq("email", user.email);

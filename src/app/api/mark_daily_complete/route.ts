@@ -23,13 +23,13 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         .eq("email", user.email)
         .single();
 
-    if (row.data.completed_challenges.includes(id)) {
+    if (row.data.completed_challenges && row.data.completed_challenges.includes(id)) {
         return NextResponse.json({ message: "Daily challenge already is completed" }, { status: 420 });
     }
 
     await supabase
         .from("users")
-        .update({completed_challenges: [...row.data.completed_challenges, id]})
+        .update({completed_challenges: [...(row.data.completed_challenges ?? []), id]})
         .eq("email", user.email);
 
     return NextResponse.json({ message: "Marked daily challenge as complete" }, { status: 200 });
