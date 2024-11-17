@@ -3,7 +3,7 @@ import styles from "./CalendarDay.module.css";
 interface CalendarDayProps {
   day: number;
   dayName: string;
-  state: "today" | "future" | "streak" | undefined;
+  state: "today" | "past" | "streak" | undefined;
 }
 
 export default function CalendarDay({ day, dayName, state }: CalendarDayProps) {
