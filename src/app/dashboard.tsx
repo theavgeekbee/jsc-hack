@@ -144,12 +144,10 @@ export default function Home() {
   const start = new Date(user_info.data.date_registered);
   const now = new Date();
 
-  let plan: any = {};
-  try {
-    plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
-  } catch (e) {
-    console.error(e);
-  }
+
+  console.log(getMonthNumber(start, now) - 1)
+  console.log(user_info.data.plan)
+  const plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
 
   const isDailyCompleted = (user_info.data.completed_challenges ?? []).includes(
     daily_challenge ?? ""

@@ -27,11 +27,12 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       ? row.data.plan
       : await generatePlan(length ? parseInt(length) : 12);
 
-  if (row.data.plan.length === 0)
+  if (!row.data.plan.length) {
     await supabase
-      .from("users")
-      .update({ plan: challenge })
-      .eq("email", user.email);
+        .from("users")
+        .update({plan: challenge})
+        .eq("email", user.email);
+  }
 
   return NextResponse.json({ challenge }, { status: 200 });
 }
