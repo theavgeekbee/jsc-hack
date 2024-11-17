@@ -7,6 +7,7 @@
 
   span {
     position: absolute;
+    border: 2px solid var(--color-foreground);
     color: var(--color-foreground);
     font-size: var(--font-small);
   }
@@ -36,6 +37,7 @@
   &[data-state="streak"] {
     background-color: var(--color-primary);
     color: var(--color-container);
+    border: none;
 
     span { color: var(--color-container); }
   }
