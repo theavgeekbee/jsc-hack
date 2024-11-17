@@ -120,6 +120,7 @@ export default function Home() {
 
     const plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const isDailyCompleted = (user_info.data.completed_challenges ?? []).includes(daily_challenge ?? "");
 
     const markDailyComplete = () => {

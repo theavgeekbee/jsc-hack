@@ -15,11 +15,11 @@ export default function Onboarding() {
     }
 
     const name = data.get("name") as string;
-    const length = data.get("length") as number;
+    const length = data.get("length") as string;
 
     fetch("/api/update_profile", {
       method: "POST",
-      body: JSON.stringify({ name, mission_length: length }),
+      body: JSON.stringify({ name, mission_length: parseInt(length) }),
     })
       .then((response) => response.ok)
       .then((res) => res)
@@ -36,7 +36,7 @@ export default function Onboarding() {
           <input id={"name"} type={"text"} placeholder={"me"} name={"name"} />.
         </p>
         <p>
-          I'll be staying for{" "}
+          I&#39;ll be staying for{" "}
           <input
             id={"length"}
             type={"number"}
