@@ -3,16 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./design.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 const readexProRegular = localFont({
   src: "./fonts/ReadexPro-Regular.ttf",
   variable: "--font-readexpro-regular",
@@ -20,6 +10,15 @@ const readexProRegular = localFont({
 const readexProBold = localFont({
   src: "./fonts/ReadexPro-Bold.ttf",
   variable: "--font-readexpro-bold",
+});
+
+const libreFranklinRegular = localFont({
+  src: "./fonts/LibreFranklin-Regular.ttf",
+  variable: "--font-librefranklin-regular",
+});
+const libreFranklinBold = localFont({
+  src: "./fonts/LibreFranklin-Bold.ttf",
+  variable: "--font-librefranklin-bold",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${readexProRegular.variable} ${readexProBold.variable}`}
+        className={`${libreFranklinRegular.variable} ${libreFranklinBold.variable} ${readexProRegular.variable} ${readexProBold.variable}`}
       >
         {children}
       </body>

@@ -1,4 +1,4 @@
-import "./CalendarDay.css";
+import styles from "./CalendarDay.module.css";
 
 interface CalendarDayProps {
   day: number;
@@ -8,8 +8,8 @@ interface CalendarDayProps {
 
 export default function CalendarDay({ day, dayName, state }: CalendarDayProps) {
   return (
-    <div className="calendaryday" data-state={state}>
-      <span>{dayName}</span>
+    <div className={styles.calendarday} data-state={state}>
+      <span>{dayName.substring(0, 2).toUpperCase()}</span>
       <span>{day}</span>
     </div>
   );

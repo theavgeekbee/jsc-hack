@@ -1,0 +1,49 @@
+.calendarday {
+  position: relative;
+
+  border: 2px solid var(--color-foreground);
+
+  border-radius: 1.5rem;
+  height: 6rem;
+  width: 6rem;
+
+  &[data-state="today"] {
+    background-color: var(--color-foreground);
+    color: var(--color-container);
+
+    & span {
+      color: var(--color-container);
+    }
+  }
+  &[data-state="streak"] {
+    background-color: var(--color-primary);
+    color: var(--color-container);
+    border: none;
+
+    & span {
+      color: var(--color-container);
+    }
+  }
+  &[data-state="past"] {
+    opacity: 0.2;
+  }
+}
+
+.calendarday span {
+  position: absolute;
+  color: var(--color-foreground);
+  font-size: var(--font-small);
+
+  &:first-child {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  &:last-child {
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+}

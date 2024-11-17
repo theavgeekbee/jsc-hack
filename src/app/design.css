@@ -1,10 +1,12 @@
-h1 {
+h1, h2 {
   font-family: var(--font-readexpro-bold);
 }
 
 body > nav {
   position: absolute;
   bottom: 1rem;
+
+  font-family: var(--font-librefranklin-regular);
 
   section {
     display: flex;
