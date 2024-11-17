@@ -1,16 +1,9 @@
-h1, h2 {
-  font-family: var(--font-readexpro-bold);
+* {
+  font-family: var(--font-librefranklin-regular);
 }
 
-body > nav {
-  position: absolute;
-  bottom: 1rem;
-
-  font-family: var(--font-librefranklin-regular);
-
-  section {
-    display: flex;
-  }
+h1, h2 {
+  font-family: var(--font-readexpro-bold);
 }
 
 label + input {
