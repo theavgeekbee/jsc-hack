@@ -1,3 +1,14 @@
+@keyframes fadeUpIn {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -15,11 +26,13 @@ p, input {
     margin: 0;
 }
 
-input#name {
+input[type] {
     border: none;
     border-bottom: 2px solid var(--color-border);
     border-radius: 0;
     width: fit-content;
+
+    padding: 0.5rem;
 
     &:focus {
         outline: none;
@@ -31,4 +44,19 @@ button {
     margin-top: 1rem;
     font-size: 1rem;
     padding: 1rem 2rem;
+}
+
+p:first-child {
+    animation: fadeUpIn .75s ease-out forwards;
+}
+
+p:nth-child(2) {
+    opacity: 0;
+    animation: fadeUpIn .75s ease-out forwards;
+    animation-delay: 0.20s;
+}
+button {
+    opacity: 0;
+    animation: fadeUpIn .75s ease-out forwards;
+    animation-delay: 0.40s;
 }
