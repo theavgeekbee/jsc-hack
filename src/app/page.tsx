@@ -34,7 +34,7 @@ export default async function Home() {
     return <>
         <header
             style={{backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 50%), rgba(0, 0, 0, 0%)), url("${url}")`}}>
-            <h1>Welcome back</h1>
+            <h1>Welcome back, {user_info.name}</h1>
         </header>
     </>;
 }

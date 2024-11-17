@@ -1,5 +1,4 @@
 'use client';
-import Input from "@/components/Input";
 import Button from "@/components/Button";
 import {redirect} from "next/navigation";
 
@@ -10,6 +9,8 @@ export default function Onboarding() {
     function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+
+        console.log(data);
 
         if (!data.has("name")) {
             return;
@@ -29,9 +30,9 @@ export default function Onboarding() {
     return (
         <section>
             <form onSubmit={submitForm}>
-                <p>Hello! My name is <input id={"name"} type={"text"} placeholder={"type here"} /></p>
+                <p>Hello! My name is <input id={"name"} type={"text"} placeholder={"type here"} name={"name"} /></p>
                 
-                <Button variant={"primary"} type={"submit"}>Let's go!</Button>
+                <Button variant={"primary"} type={"submit"} >Let&#39;s go!</Button>
             </form>
         </section>
     );
