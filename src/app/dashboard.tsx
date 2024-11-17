@@ -61,31 +61,33 @@ export default function Home() {
 
   return (
     <>
-      <header
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 50%), rgba(0, 0, 0, 0%)), url("${url}")`,
-        }}
-      >
-        <h1>Welcome back, {user_info.data.name}</h1>
+      <main>
+        <header
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 50%), rgba(0, 0, 0, 0%)), url("${url}")`,
+          }}
+        >
+          <h1>Welcome back, {user_info.data.name}</h1>
 
-        <div>
-        {days.map((day) => (
-          <CalendarDay
-            day={day.getDate()}
-            dayName={WEEKDAY[day.getDay()]}
-            state={
-              day.getDate() === today.getDate()
-                ? "today"
-                : weeklyChallenges.includes(day.getDate())
-                ? "streak"
-                : day.getDate() < today.getDate()
-                ? "future"
-                : undefined
-            }
-          />
-        ))}
-        </div>
-      </header>
+          <div>
+          {days.map((day) => (
+            <CalendarDay
+              day={day.getDate()}
+              dayName={WEEKDAY[day.getDay()]}
+              state={
+                day.getDate() === today.getDate()
+                  ? "today"
+                  : weeklyChallenges.includes(day.getDate())
+                  ? "streak"
+                  : day.getDate() < today.getDate()
+                  ? "future"
+                  : undefined
+              }
+            />
+          ))}
+          </div>
+        </header>
+      </main>
     </>
   );
 }

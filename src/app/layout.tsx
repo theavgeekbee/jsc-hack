@@ -37,9 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${readexProRegular.variable} ${readexProBold.variable}`}
       >
-        <main>
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
