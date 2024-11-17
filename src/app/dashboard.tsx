@@ -144,7 +144,7 @@ export default function Home() {
   const start = new Date(user_info.data.date_registered);
   const now = new Date();
 
-  let plan = {};
+  let plan: any = {};
   try {
     plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
   } catch (e) {

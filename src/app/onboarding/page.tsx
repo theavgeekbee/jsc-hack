@@ -2,7 +2,6 @@
 import Button from "@/components/Button";
 import { redirect } from "next/navigation";
 
-import "./page.css";
 import { FormEvent } from "react";
 
 import styles from "./onboarding.module.css";
