@@ -179,7 +179,7 @@ export default function Home() {
                 </div>
                 <div className={styles.mission_monthly}>
                     <h3>MONTHLY</h3>
-                    {plan.activity}
+                    <p>{plan.activity}</p>
                 </div>
             </section>
         </main>
