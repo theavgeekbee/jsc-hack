@@ -14,16 +14,34 @@ export default function Home() {
         weekDates.push(new Date(today + 24 * 60 * 60 * 1000 * i));
     }
 
+    interface UserInfo {
+        name: string;
+        aura: number;
+        streak: number;
+        date_registered: string;
+        plan: string;
+        mission_length: number;
+        completed_challenges: string[];
+    }
+    interface Challenge {
+        id: string;
+        day: string;
+        aura: number;
+        challenge: string;
+    }
+
+
     // TODO: collapse any types
     const [daily_challenge, setDailyChallenge] = useState<undefined | string>(
         undefined
     );
     // @eslint-ignore-next-line
-    const [user_info, setUserInfo] = useState<undefined | any>(undefined);
+    const [user_info, setUserInfo] = useState<undefined | {data: UserInfo}>(undefined);
     const [plan_fetched, setPlanFetched] = useState(false);
     const [last_week_challenges, setLastWeekChallenges] = useState<
-        undefined | any[]
+        undefined | Challenge[]
     >(undefined);
+    const [leaderboard, setLeaderboard] = useState<undefined | UserInfo[]>(undefined);
 
     useEffect(() => {
         fetch("/api/daily_challenge")
@@ -57,13 +75,17 @@ export default function Home() {
                         if (ok) setPlanFetched(true);
                     });
             });
+        fetch("/api/aura_leaderboard")
+            .then((response) => response.json())
+            .then((data) => setLeaderboard(data.data));
     }, []);
 
     if (
         !plan_fetched ||
         !daily_challenge ||
         !user_info ||
-        !last_week_challenges
+        !last_week_challenges ||
+        !leaderboard
     ) {
         return (
             <main className={styles.loading}>
@@ -106,6 +128,7 @@ export default function Home() {
 
         return undefined;
     }
+
     function getMonthNumber(startDate: Date, endDate: Date): number {
         const startYear = startDate.getFullYear();
         const startMonth = startDate.getMonth();
@@ -149,6 +172,10 @@ export default function Home() {
             });
     }
 
+    const leaderboardPosition = leaderboard.findIndex(
+        (user) => user.name === user_info.data.name
+    ) + 1;
+
     return (
         <main className={styles.dashboard}>
             <header
@@ -163,7 +190,7 @@ export default function Home() {
             <section className={styles.weekview}>
                 {weekDates.map((date: Date, index: number) => {
                     const challenge = last_week_challenges.find(
-                        (c) => c.day.split("-")[2] == date.getDate()
+                        (c) => parseInt(c.day.split("-")[2]) == date.getDate()
                     );
 
                     if (!challenge) {
@@ -198,15 +225,21 @@ export default function Home() {
                     <span>🔥 STREAK</span>
                     <span>{user_info.data.streak}</span>
                 </div>
+                <div className={styles.stat_lb}>
+                    <span>🏆 RANK</span>
+                    <span>{leaderboardPosition}</span>
+                </div>
             </section>
 
             <h2>Your missions</h2>
             <section className={styles.missions}>
-                <div className={styles.mission_daily} onClick={() => {markDailyComplete()}}>
+                <div className={styles.mission_daily} onClick={() => {
+                    markDailyComplete()
+                }}>
                     <h3>DAILY</h3>
                     <p>{daily_challenge}</p>
                 </div>
-                <div className={styles.mission_monthly} onClick={() => markPlanComplete()}>
+                <div className={styles.mission_} onClick={() => markPlanComplete()}>
                     <h3>MONTHLY</h3>
                     {plan.activity}
                 </div>

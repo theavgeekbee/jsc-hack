@@ -60,6 +60,12 @@
     border: 2px solid #FF860A;
     color: #FF860A;
   }
+
+  .stat_lb {
+    background-color: #D1F0FF;
+    border: 2px solid #0AADFF;
+    color: #0AADFF;
+  }
 }
 
 .missions {
