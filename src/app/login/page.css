@@ -22,5 +22,16 @@ section {
   h1 {
     margin: 0;
   }
+
+  input, button {
+    width: 100%;
+  }
 }
 
+.buttons button {
+  display: block;
+
+  & + button {
+    margin-top: 0.5rem;
+  }
+}

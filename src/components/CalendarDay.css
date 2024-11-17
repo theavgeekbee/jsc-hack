@@ -1,0 +1,40 @@
+.calendarday {
+  position: relative;
+
+  border-radius: 1.5rem;
+
+  span {
+    position: absolute;
+    color: var(--color-foreground);
+    font-size: var(--font-small);
+  }
+
+  span:first-child {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  span:last-child {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  &[data-state="today"] {
+    background-color: var(--color-primary);
+    color: var(--color-container);
+
+    span { color: var(--color-container); }
+  }
+  &[data-state="future"] {
+    background-color: var(--color-primary);
+    color: var(--color-container);
+
+    span:first-child { color: var(--color-container); }
+  }
+  &[data-state="streak"] {
+    background-color: var(--color-primary);
+    color: var(--color-container);
+
+    span { color: var(--color-container); }
+  }
+}

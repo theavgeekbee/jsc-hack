@@ -12,6 +12,7 @@ label + input {
 }
 
 label {
+  color: var(--color-border);
   font-size: var(--font-small);
 }
 

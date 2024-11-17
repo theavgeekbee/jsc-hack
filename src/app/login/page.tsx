@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
@@ -14,12 +15,14 @@ export default function LoginPage() {
         <Input type="email" id="email" label="Email" />
         <Input type="password" id="password" label="Password" />
 
-        <Button variant="primary" type="submit" formAction={login}>
-          Log in
-        </Button>
-        <Button variant="secondary" type="submit" formAction={signup}>
-          Sign up
-        </Button>
+        <div className="buttons">
+          <Button variant="primary" type="submit" formAction={login}>
+            Log in
+          </Button>
+          <Button variant="secondary" type="submit" formAction={signup}>
+            Sign up
+          </Button>
+        </div>
       </section>
     </>
   );
