@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  min-height: 100vh;
+
+  & section {
+    padding: 1rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  & header {
+    display: flex;
+    align-items: center;
+
+    height: 200px;
+    padding-left: 2rem;
+    background-position: 2% 27%;
+
+    border-radius: 1rem;
+
+    color: white;
+  }
+}

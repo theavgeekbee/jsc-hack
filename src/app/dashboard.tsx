@@ -120,6 +120,34 @@ export default function Home() {
 
     const plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
 
+    const isDailyCompleted = (user_info.data.completed_challenges ?? []).includes(daily_challenge ?? "");
+
+    const markDailyComplete = () => {
+        fetch("/api/mark_daily_complete")
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.message === "Daily challenge already is completed") {
+                    alert("Daily challenge already completed");
+                } else {
+                    alert("Daily challenge completed");
+                    window.location.reload();
+                }
+            });
+    }
+
+    const markPlanComplete = () => {
+        fetch("/api/mark_plan_complete")
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.message === "Plan already marked as complete today") {
+                    alert("Plan already marked as complete today");
+                } else {
+                    alert("Plan marked as complete");
+                    window.location.reload();
+                }
+            });
+    }
+
     return (
         <main className={styles.dashboard}>
             <header
@@ -173,13 +201,13 @@ export default function Home() {
 
             <h2>Your missions</h2>
             <section className={styles.missions}>
-                <div className={styles.mission_daily}>
+                <div className={styles.mission_daily} onClick={() => {markDailyComplete()}}>
                     <h3>DAILY</h3>
                     <p>{daily_challenge}</p>
                 </div>
-                <div className={styles.mission_monthly}>
+                <div className={styles.mission_monthly} onClick={() => markPlanComplete()}>
                     <h3>MONTHLY</h3>
-                    <p>{plan.activity}</p>
+                    {plan.activity}
                 </div>
             </section>
         </main>
