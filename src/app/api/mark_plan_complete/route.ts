@@ -35,6 +35,13 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         })
         .eq("email", user.email);
 
+    if (daysBetween >= 1 && daysBetween < 2) {
+        var existingStreak = await supabase.from("users").select("streak").eq("email", user.email).single();
+        await supabase.from("users").update({streak: ++(existingStreak.data!.streak as number)}).eq("email", user.email);
+    } else {
+        await supabase.from("users").update({streak: 0}).eq("email", user.email);
+    }
+
 
     return NextResponse.json({
         message: "Marked daily plan as complete",
