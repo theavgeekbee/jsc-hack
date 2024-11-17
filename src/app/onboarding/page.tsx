@@ -1,14 +1,21 @@
 'use client';
-import {useState} from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import {redirect} from "next/navigation";
 
 import './page.css';
+import {FormEvent} from "react";
 
 export default function Onboarding() {
     function submitForm(event: FormEvent<HTMLFormElement>) {
-        const {name} = event.target;
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        if (!data.has("name")) {
+            return;
+        }
+
+        const name = data.get("name") as string;
 
         fetch("/api/update_name", {
             method: "POST",
@@ -21,7 +28,7 @@ export default function Onboarding() {
 
     return (
         <section>
-            <form onsubmit={submitForm}>
+            <form onSubmit={submitForm}>
                 <Input label={"Name"} id={"name"} type={"text"} />
                 <Button variant={"primary"} type={"submit"}>Submit</Button>
             </form>
