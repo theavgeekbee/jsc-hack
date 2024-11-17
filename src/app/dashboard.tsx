@@ -5,6 +5,17 @@ import CalendarDay from "@/components/CalendarDay";
 import styles from "./dashboard.module.css";
 import {redirect} from "next/navigation";
 
+export interface UserInfo {
+    name: string;
+    aura: number;
+    streak: number;
+    date_registered: string;
+    plan: string;
+    mission_length: number;
+    completed_challenges: string[];
+    id: string;
+}
+
 export default function Home() {
     const url =
         "https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -15,15 +26,6 @@ export default function Home() {
         weekDates.push(new Date(today + 24 * 60 * 60 * 1000 * i));
     }
 
-    interface UserInfo {
-        name: string;
-        aura: number;
-        streak: number;
-        date_registered: string;
-        plan: string;
-        mission_length: number;
-        completed_challenges: string[];
-    }
     interface Challenge {
         id: string;
         day: string;
