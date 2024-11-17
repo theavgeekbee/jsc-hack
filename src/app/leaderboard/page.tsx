@@ -34,7 +34,12 @@ export default async function LeaderboardPage() {
         <ol>
           {leaderboardData.map(({ user, rank }) => (
             <li>
-              <span><span>{rank}.</span> {user.name}</span> <span style={{color:user.aura < 0 && '#DA4167'}}>{user.aura} aura</span>
+              <span>
+                <span>{rank}.</span> {user.name}
+              </span>{" "}
+              <span style={{ color: user.aura < 0 && "#DA4167" }}>
+                {user.aura} aura
+              </span>
             </li>
           ))}
         </ol>

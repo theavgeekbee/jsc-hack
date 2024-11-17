@@ -2,7 +2,8 @@
   font-family: var(--font-librefranklin-regular);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--font-readexpro-bold);
 }
 

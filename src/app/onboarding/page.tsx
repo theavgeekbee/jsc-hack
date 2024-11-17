@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import "./page.css";
 import { FormEvent } from "react";
 
+import styles from "./onboarding.module.css";
+
 export default function Onboarding() {
   function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,28 +31,31 @@ export default function Onboarding() {
   }
 
   return (
-    <section>
-      <form onSubmit={submitForm}>
-        <p>
-          Hello! My name is{" "}
-          <input id={"name"} type={"text"} placeholder={"me"} name={"name"} />.
-        </p>
-        <p>
-          I&#39;ll be staying for{" "}
-          <input
-            id={"length"}
-            type={"number"}
-            placeholder={"some"}
-            name={"mission_length"}
-            min={1}
-          />{" "}
-          months.
-        </p>
+    <main className={styles.page}>
+      <section>
+        <form onSubmit={submitForm}>
+          <p>
+            Hello! My name is{" "}
+            <input id={"name"} type={"text"} placeholder={"me"} name={"name"} />
+            .
+          </p>
+          <p>
+            I&#39;ll be staying for{" "}
+            <input
+              id={"length"}
+              type={"number"}
+              placeholder={"some"}
+              name={"mission_length"}
+              min={1}
+            />{" "}
+            months.
+          </p>
 
-        <Button variant={"primary"} type={"submit"}>
-          Let&#39;s go!
-        </Button>
-      </form>
-    </section>
+          <Button variant={"primary"} type={"submit"}>
+            Let&#39;s go!
+          </Button>
+        </form>
+      </section>
+    </main>
   );
 }

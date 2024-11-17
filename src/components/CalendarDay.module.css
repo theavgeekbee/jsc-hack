@@ -1,5 +1,5 @@
 .calendarday {
-  --glow: #171D1C55;
+  --glow: #171d1c55;
 
   position: relative;
 
@@ -18,7 +18,7 @@
     }
   }
   &[data-state="streak"] {
-    --glow: #104EE3BB;
+    --glow: #104ee3bb;
 
     background-color: var(--color-primary);
     color: var(--color-container);
@@ -29,7 +29,7 @@
     }
   }
   &[data-state="past"] {
-    --glow: #171D1C;
+    --glow: #171d1c;
     opacity: 0.2;
   }
 

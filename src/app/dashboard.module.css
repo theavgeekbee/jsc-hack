@@ -1,10 +1,40 @@
 @keyframes pulse {
-  from { opacity: 0.4; }
-  to {opacity: 1.0;}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.dashboard h2 {
-  font-size: 1rem;
+.dashboard {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+
+  & > section {
+    padding: 1rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  & h2 {
+    font-size: 1rem;
+  }
+
+  & header {
+    display: flex;
+    align-items: center;
+
+    height: 200px;
+    padding-left: 2rem;
+    background-position: 0 77%;
+
+    border-radius: 1rem;
+
+    color: white;
+  }
 }
 
 .loading {
@@ -53,20 +83,20 @@
     color: var(--color-container);
 
     & span:first-child {
-      color: #B8CAF7;
+      color: #b8caf7;
     }
   }
 
   .stat_streak {
-    background-color: #FFE8D1;
-    border: 2px solid #FF860A;
-    color: #FF860A;
+    background-color: #ffe8d1;
+    border: 2px solid #ff860a;
+    color: #ff860a;
   }
 
   .stat_lb {
-    background-color: #D1F0FF;
-    border: 2px solid #0AADFF;
-    color: #0AADFF;
+    background-color: #d1f0ff;
+    border: 2px solid #0aadff;
+    color: #0aadff;
   }
 }
 

@@ -3,8 +3,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function Input({ label, ...props }: InputProps) {
-  return <div>
-    <label htmlFor={props.id}>{label}</label>
-    <input id={props.id} name={props.id} {...props} />
-  </div>;
+  return (
+    <div>
+      <label htmlFor={props.id}>{label}</label>
+      <input id={props.id} name={props.id} {...props} />
+    </div>
+  );
 }
