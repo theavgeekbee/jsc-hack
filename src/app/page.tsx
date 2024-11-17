@@ -3,7 +3,7 @@
 import {createClient} from "@/utils/supabase/server";
 import {redirect} from "next/navigation";
 
-import Home from "@/app/home";
+import DashboardPage from "@/app/dashboard";
 
 import './page.css'
 
@@ -21,5 +21,5 @@ export default async function MainPage() {
         redirect("/onboarding");
     }
 
-    return <Home />
+    return <DashboardPage />
 }
