@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import CalendarDay from "@/components/CalendarDay";
+import Loading from "@/components/Loading";
 
 import styles from "./dashboard.module.css";
 import { redirect } from "next/navigation";
@@ -93,11 +94,7 @@ export default function Home() {
     !last_week_challenges ||
     !leaderboard
   ) {
-    return (
-      <main className={styles.loading}>
-        <h1>Loading...</h1>
-      </main>
-    );
+    return <Loading />;
   }
 
   function get_day_name(date: Date) {
@@ -147,9 +144,13 @@ export default function Home() {
   const start = new Date(user_info.data.date_registered);
   const now = new Date();
 
-  const plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
+  let plan = {};
+  try {
+    plan = JSON.parse(user_info.data.plan)[getMonthNumber(start, now) - 1];
+  } catch (e) {
+    console.error(e);
+  }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isDailyCompleted = (user_info.data.completed_challenges ?? []).includes(
     daily_challenge ?? ""
   );
@@ -235,6 +236,7 @@ export default function Home() {
           </div>
           <div
             className={styles.stat_lb}
+            style={{cursor: "pointer"}}
             onClick={() => {
               redirect("/leaderboard");
             }}
@@ -248,6 +250,7 @@ export default function Home() {
         <section className={styles.missions}>
           <div
             className={styles.mission_daily}
+            data-complete={isDailyCompleted}
             onClick={() => {
               markDailyComplete();
             }}
@@ -260,7 +263,7 @@ export default function Home() {
             onClick={() => markPlanComplete()}
           >
             <h3>MONTHLY</h3>
-            {plan.activity}
+            {plan.activity ?? <i>It's empty</i>}
           </div>
         </section>
       </section>

@@ -1,5 +1,6 @@
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import Loading from "@/components/Loading";
 
 import { login, signup } from "./actions";
 
@@ -10,7 +11,7 @@ export default function LoginPage() {
     <main className={styles.page}>
       <div>
         <section>
-          <h1>Welcome aboard</h1>
+          <h1>Welcome aboard!</h1>
           <form>
             <Input type="email" id="email" label="Email" />
             <br />
