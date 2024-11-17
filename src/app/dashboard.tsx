@@ -102,7 +102,7 @@ export default function Home() {
         }
 
         // is it in the past ?
-        if (date < today) {
+        if (date.getDate() < new Date().getDate()) {
             return "past";
         }
 
