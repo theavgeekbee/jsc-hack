@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import CalendarDay from "@/components/CalendarDay";
 
 import styles from "./dashboard.module.css";
+import {redirect} from "next/navigation";
 
 export default function Home() {
     const url =
@@ -225,7 +226,7 @@ export default function Home() {
                     <span>🔥 STREAK</span>
                     <span>{user_info.data.streak}</span>
                 </div>
-                <div className={styles.stat_lb}>
+                <div className={styles.stat_lb} onClick={() => {redirect("/leaderboard")}}>
                     <span>🏆 RANK</span>
                     <span>{leaderboardPosition}</span>
                 </div>
