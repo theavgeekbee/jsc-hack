@@ -10,7 +10,6 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         return NextResponse.json({err: "User is not authenticated"}, {status: 401});
     }
 
-
     const row = await supabase.from("users").select("*").eq("email", user.email).single();
 
     const url = new URL(req.url);

@@ -10,6 +10,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         data: {user},
     } = await supabase.auth.getUser();
 
+    // const {error} = await supabase.auth.updateUser({ display_name: name })
+
     const {error} = await supabase
         .from("users")
         .update({name: name})
